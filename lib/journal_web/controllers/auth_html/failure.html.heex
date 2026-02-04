@@ -1,0 +1,14 @@
+<div class="mx-auto max-w-sm">
+  <.header class="text-center">
+    Something went wrong!
+    <:subtitle>
+      We were unable to sign you in. Please check your credentials and try again.
+    </:subtitle>
+  </.header>
+
+  <div class="mt-8 text-center text-error">
+    <pre class="text-left bg-base-200 p-4 rounded overflow-auto">
+      <%= inspect(assigns, pretty: true) %>
+    </pre>
+  </div>
+</div>

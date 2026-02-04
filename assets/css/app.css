@@ -21,39 +21,57 @@
   curl -sLO https://github.com/saadeghi/daisyui/releases/latest/download/daisyui-theme.js
   We ship with two themes, a light one inspired on Phoenix colors and a dark one inspired
   on Elixir colors. Build your own at: https://daisyui.com/theme-generator/ */
+/* Fonts - Vintage Library Card Aesthetic */
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Courier+Prime:wght@400;700&family=EB+Garamond:ital,wght@0,400;0,600;1,400&display=swap');
+
+@theme {
+  --font-serif: "EB Garamond", serif;
+  --font-display: "Libre Baskerville", serif;
+  --font-mono: "Courier Prime", monospace;
+}
+
 @plugin "../vendor/daisyui-theme" {
   name: "dark";
   default: false;
   prefersdark: true;
   color-scheme: "dark";
-  --color-base-100: oklch(30.33% 0.016 252.42);
-  --color-base-200: oklch(25.26% 0.014 253.1);
-  --color-base-300: oklch(20.15% 0.012 254.09);
-  --color-base-content: oklch(97.807% 0.029 256.847);
-  --color-primary: oklch(58% 0.233 277.117);
-  --color-primary-content: oklch(96% 0.018 272.314);
-  --color-secondary: oklch(58% 0.233 277.117);
-  --color-secondary-content: oklch(96% 0.018 272.314);
-  --color-accent: oklch(60% 0.25 292.717);
-  --color-accent-content: oklch(96% 0.016 293.756);
-  --color-neutral: oklch(37% 0.044 257.287);
-  --color-neutral-content: oklch(98% 0.003 247.858);
-  --color-info: oklch(58% 0.158 241.966);
-  --color-info-content: oklch(97% 0.013 236.62);
-  --color-success: oklch(60% 0.118 184.704);
-  --color-success-content: oklch(98% 0.014 180.72);
-  --color-warning: oklch(66% 0.179 58.318);
-  --color-warning-content: oklch(98% 0.022 95.277);
-  --color-error: oklch(58% 0.253 17.585);
-  --color-error-content: oklch(96% 0.015 12.422);
-  --radius-selector: 0.25rem;
-  --radius-field: 0.25rem;
-  --radius-box: 0.5rem;
-  --size-selector: 0.21875rem;
-  --size-field: 0.21875rem;
-  --border: 1.5px;
-  --depth: 1;
-  --noise: 0;
+  /* Vintage Archive Theme - Sepia & Aged Paper */
+  --color-base-100: oklch(18% 0.02 40);
+  /* Deep Walnut Brown */
+  --color-base-200: oklch(14% 0.02 40);
+  /* Darker Walnut */
+  --color-base-300: oklch(10% 0.02 40);
+  /* Almost Black Brown */
+  --color-base-content: oklch(92% 0.03 60);
+  /* Aged Parchment */
+
+  --color-primary: oklch(72% 0.15 45);
+  /* Vintage Brass/Gold */
+  --color-primary-content: oklch(15% 0.02 40);
+
+  --color-secondary: oklch(58% 0.12 35);
+  /* Oxidized Copper */
+  --color-secondary-content: oklch(95% 0.02 50);
+
+  --color-accent: oklch(68% 0.10 160);
+  /* Faded Ink Green */
+  --color-accent-content: oklch(18% 0.02 160);
+
+  --color-neutral: oklch(25% 0.02 260);
+  --color-neutral-content: oklch(90% 0.01 260);
+
+  --color-info: oklch(70% 0.1 240);
+  --color-success: oklch(75% 0.15 160);
+  --color-warning: oklch(85% 0.15 80);
+  --color-error: oklch(65% 0.2 20);
+
+  --radius-selector: 0.2rem;
+  --radius-field: 0.2rem;
+  --radius-box: 0.4rem;
+  --border: 1px;
+  --depth: 0;
+  --noise: 1;
+  /* Add texture */
 }
 
 @plugin "../vendor/daisyui-theme" {
@@ -100,6 +118,37 @@
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
 /* Make LiveView wrapper divs transparent for layout */
-[data-phx-session], [data-phx-teleported-src] { display: contents }
+[data-phx-session],
+[data-phx-teleported-src] {
+  display: contents
+}
 
 /* This file is for your main application CSS */
+
+/* Apply Fonts */
+body {
+  font-family: var(--font-serif);
+  /* Layered vintage paper texture background */
+  background:
+    /* Subtle noise texture */
+    repeating-linear-gradient(0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, .03) 2px,
+      rgba(0, 0, 0, .03) 4px),
+    /* Aged paper gradient */
+    radial-gradient(ellipse at 20% 30%,
+      oklch(20% 0.03 45),
+      oklch(16% 0.02 40));
+  background-attachment: fixed;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-display);
+  letter-spacing: 0.02em;
+}

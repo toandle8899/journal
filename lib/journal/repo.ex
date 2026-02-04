@@ -1,5 +1,5 @@
 defmodule Journal.Repo do
-  use Ecto.Repo,
+  use AshSqlite.Repo,
     otp_app: :journal,
     adapter: Ecto.Adapters.SQLite3
 end

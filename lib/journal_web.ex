@@ -90,6 +90,7 @@ defmodule JournalWeb do
       # Common modules used in templates
       alias Phoenix.LiveView.JS
       alias JournalWeb.Layouts
+      import Phoenix.Controller, only: [get_csrf_token: 0]
 
       # Routes generation with the ~p sigil
       unquote(verified_routes())

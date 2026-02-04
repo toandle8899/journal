@@ -62,6 +62,16 @@ if config_env() == :prod do
     ],
     secret_key_base: secret_key_base
 
+  # Token signing secret for authentication
+  token_signing_secret =
+    System.get_env("TOKEN_SIGNING_SECRET") ||
+      raise """
+      environment variable TOKEN_SIGNING_SECRET is missing.
+      You can generate one by calling: mix phx.gen.secret
+      """
+
+  config :journal, :token_signing_secret, token_signing_secret
+
   # ## SSL Support
   #
   # To get SSL working, you will need to add the `https` key

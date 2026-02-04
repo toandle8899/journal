@@ -9,7 +9,10 @@ import Config
 
 config :journal,
   ecto_repos: [Journal.Repo],
+  ash_domains: [Journal.Accounts, Journal.Journals],
   generators: [timestamp_type: :utc_datetime]
+
+config :journal, token_signing_secret: "some_super_secret_random_value_for_dev_env"
 
 # Configure the endpoint
 config :journal, JournalWeb.Endpoint,
