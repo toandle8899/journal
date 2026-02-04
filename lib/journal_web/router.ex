@@ -36,7 +36,7 @@ defmodule JournalWeb.Router do
       live "/journals/:id/edit", JournalLive.Index, :edit
     end
 
-    get "/", PageController, :home
+    get "/", PageController, :redirect_to_signin
   end
 
   # Define specific auth scope if needed, but auth_routes_for handles it.
